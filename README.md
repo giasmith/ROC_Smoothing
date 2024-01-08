@@ -16,6 +16,6 @@ A custom R function for plotting ROC curves and related visualizations.
 - sd.1: Standard deviation of Group 1
 - prob: Probability threshold
 
-![Sim Image](ROC.png)
+![Sim Image](sim.png)
 
 
