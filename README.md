@@ -1,3 +1,8 @@
+## Features
+- Plots ROC curves
+- Displays density plots
+- Generates Q-Q plots
+
 ## Description
 
 ### ROC Curve
@@ -37,20 +42,15 @@ The R code `/ROC_Func_v6.R` displays an ROC curve which is created using the fol
    - Plot density curves for both groups in Q-Q space.
    - Add vertical dashed lines at the cutoff quantiles (`q0.p` and `q1.p`).
 
-## Usage
-- plot.roc()
-
-## Features
-- Plots ROC curves
-- Displays density plots
-- Generates Q-Q plots
-
 ## Parameters 
 - m.0: Mean of Group 0
 - m.1: Mean of Group 1
 - sd.0: Standard deviation of Group 0
 - sd.1: Standard deviation of Group 1
 - prob: Probability threshold
+
+## Usage
+`plot.roc()`
 
 ![Sim Image](sim.png)
 
