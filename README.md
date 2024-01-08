@@ -1,8 +1,7 @@
 ## Description
 A custom R function for plotting ROC curves and related visualizations.
 
-## Usage 
-- ** Example usage **
+## Usage
 - plot.roc()
 
 ## Features
@@ -16,3 +15,7 @@ A custom R function for plotting ROC curves and related visualizations.
 - sd.0: Standard deviation of Group 0
 - sd.1: Standard deviation of Group 1
 - prob: Probability threshold
+
+![Sim Image](ROC.png)
+
+
