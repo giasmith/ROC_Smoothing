@@ -2,15 +2,6 @@
 # ROC Function v6
 # 06-29-23
 
-## Objectives: 
-### 1. Set a finite min and max value for Q-Q Plot
-### 2. Complete the mathematical equations given by Jeffrey
-#### Standardize y1 N(0,1) and be able to pass a & b for y2 
-### 3. Start on the theory computationally
-
-### Notes
-#### 1.
-
 
 plot.roc <- function(m.0 = 2, m.1 = 3, sd.0=1, sd.1 = 1, prob=0.3) {
   
