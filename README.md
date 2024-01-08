@@ -17,7 +17,6 @@ The R code `/ROC_Func_v6.R` displays an ROC curve which is created using the fol
    - Calculate true positive rates (`tpr`) using the normal distribution and the calculated parameters `a` and `b`.
 
 3. **Plot ROC Curve:**
-   - Create a 2x2 plot layout.
    - Plot the ROC curve using `plot()` and draw the cutoff point with a purple dot.
    - Add dashed vertical line at the specified probability (`prob`).
 
