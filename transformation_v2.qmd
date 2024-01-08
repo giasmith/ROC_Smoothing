@@ -1,0 +1,225 @@
+---
+title: "Cost & Score Functions for a Binormal Model"
+format: html
+editor: visual
+---
+
+### Model for Scores
+
+$$
+x_0 \sim N(\mu_0, \sigma_0^2)
+$$
+
+$$
+x_1 \sim N(\mu_1, \sigma_1^2)
+$$
+
+------------------------------------------------------------------------
+
+### Transformation Function
+
+$$
+\begin{align*}
+H(x) &= \frac{x-\mu_0}{\sigma_0}\\
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+### Parameterizing the Transformation Function
+
+We can write this,
+
+$$
+\begin{align*}
+H(x_D) &= \frac{x_D - \mu_D}{\sigma_D} =
+\frac{x_D}{\sigma_D} - \frac{\mu_D}{\sigma_D} =
+\theta_1 x_0 + \theta_0 \\
+\end{align*}
+$$
+
+where,
+
+$$
+\theta_0 = -\frac{\mu_D}{\sigma_D}, \
+\theta_1 = \frac{1}{\sigma_D} 
+$$
+
+------------------------------------------------------------------------
+
+### Distribution of Transformed Scores
+
+$H(x_0) \sim ?$
+
+$$
+\begin{align*}
+H(x_0) &= \frac{x_0-\mu_0}{\sigma_0}\\\
+\\
+& \therefore H(x_0)\sim N(0,1)
+\end{align*}
+$$
+
+$$
+\begin{align*}
+H(x_0) = \theta_1 x_0 + \theta_0 &= N(0,1)\\
+&= N \bigg(-\frac{\theta_0}{\theta_1}, \frac{1}{\theta_1^2} \bigg)
+\end{align*}
+$$ {#eq-1}
+
+$H(x_1) \sim ?$
+
+$$
+\begin{align*}
+H(x_1) &= \frac{x_1-\mu_0}{\sigma_0}\\
+\\
+\\
+E[H(x_1)] &= E \bigg[\frac{x_1-\mu_0}{\sigma_0}\bigg]
+=\frac{E[x_1]-\mu_0}{\sigma_0}= \frac{\mu_1-\mu_0}{\sigma_0}
+\\
+\\
+Var[H(x_1)] &= Var\bigg[\frac{x_1-\mu_0}{\sigma_0}\bigg]
+=\frac{Var[x_1]}{\sigma_0^2}= \frac{\sigma_1^2}{\sigma_0^2}
+\\
+\\
+& \therefore H(x_1)\sim N \bigg(\frac{\mu_1-\mu_0}{\sigma_0}, \frac{\sigma_1^2}{\sigma_0^2}\bigg) 
+\end{align*}
+$$
+
+Suppose $a = -\frac{\mu_0 +\mu_1}{\sigma_1}$ and $b = \frac{\sigma_0}{\sigma_1} > 0$, then $H(x_1)\sim N \bigg(\frac{a}{b}, \frac{1}{b^2}\bigg)$.
+
+To standardize $H(x_1)$
+
+$$
+\begin{align*}
+H(x_1)= \theta_0 +\theta_1 x_1 &= N \bigg(\frac{a}{b}, \frac{1}{b^2}\bigg)\\
+x_1 &= \frac{1}{\theta_1}  N \bigg(\frac{a}{b}, \frac{1}{b^2}\bigg) - \frac{\theta_0}{\theta_1}\\ 
+&= N \bigg(\frac{a}{\theta_1b}- \frac{\theta_0}{\theta_1}, \frac{1}{(\theta_1b)^2}\bigg)
+\end{align*}
+$$ {#eq-2}
+
+Using indicator function $D$ with equations $(1)$ and $(2)$, we get
+
+$$
+x_D \sim N \bigg( \bigg (\frac{a}{b}D - \theta_0 \bigg)\frac{1}{\theta_1}, \frac{1}{\theta_1^2(1+(b^2-1)D)} \bigg)
+$$
+
+$$
+D = 
+\begin{cases} 
+0 & \text{if the population is not diseased} \\
+1 & \text{if the population is diseased}
+\end{cases}
+$$
+
+------------------------------------------------------------------------
+
+### Negative Log-Likelihood Function
+
+$$
+\begin{align*}
+-\ln L(x_j|D)
+&= -\ln \bigg[ 
+\frac{1}{\sqrt{ \frac{2\pi}{\theta_1^2(1+(b^2-1)D)}}}
+e^{-\frac{\bigg(x_j-\bigg (\frac{a}{b}D + \theta_0 \bigg)\frac{1}{\theta_1}\bigg)^2}{\frac{2}{\theta_1^2(1+(b^2-1)D)}}} \bigg]
+\\\\
+&= -\ln \bigg[ 
+\frac{1}{\sqrt{ \frac{2\pi}{\theta_1^2(1+(b^2-1)D)}}} \bigg] -
+\ln \bigg[ e^{-\frac{\bigg(x_j-\bigg (\frac{a}{b}D + \theta_0 \bigg)\frac{1}{\theta_1}\bigg)^2}{\frac{2}{\theta_1^2(1+(b^2-1)D)}}} \bigg]
+\\\\
+&= -\ln \bigg[ 
+\sqrt{{ \frac{\theta_1^2(1+(b^2-1)D)}{2\pi}}} \bigg] -
+\ln \bigg[ e^{-\frac{\bigg(x_j-\bigg (\frac{a}{b}D + \theta_0 \bigg)\frac{1}{\theta_1}\bigg)^2}{\frac{2}{\theta_1^2(1+(b^2-1)D)}}} \bigg]\\
+&= -\frac{1}{2}\ln(\theta_1^2(1+(b^2-1)D) ) + \frac{1}{2}\ln(2\pi) +
+\frac{\bigg(x_j-\bigg (\frac{a}{b}D + \theta_0 \bigg)\frac{1}{\theta_1}\bigg)^2}{\frac{2}{\theta_1^2(1+(b^2-1)D)}} \\
+&= -\frac{1}{2}\ln(\theta_1^2) -\frac{1}{2}\ln(1+(b^2-1)D)+ \frac{1}{2}\ln(2\pi)+
+\frac{\bigg(x_j-\bigg (\frac{a}{b}D + \theta_0 \bigg)\frac{1}{\theta_1}\bigg)^2 (\theta_1^2(1+(b^2-1)D)}{2} \\\\
+&= -\ln(\theta_1) -\frac{1}{2}\ln(1+(b^2-1)D)+ \frac{1}{2}\ln(2\pi)+ \sum_{j =0}^{n+m} \frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)^2  \\
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+### Score Functions
+
+#### Gradient with respect to parameter a:
+
+$$
+\begin{align*}
+-\frac{\delta\ln L}{\delta a} 
+&=\frac{\delta}{\delta a}\bigg[ -\ln(\theta_1) -\frac{1}{2}\ln(1+(b^2-1)D)+ \frac{1}{2}\ln(2\pi)+ \frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)^2 \bigg]  
+\\\\
+&=\bigg[ 2\frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg) \left(\frac{-D}{b} \right) \bigg] 
+\\\\
+&=\bigg[ (1+(b^2-1)D)
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)\left(-\frac{D}{b}\right) \bigg] 
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+#### Gradient with respect to parameter b:
+
+$$
+\begin{align*}
+-\frac{\delta\ln L}{\delta b}
+&=\frac{\delta}{\delta b} \bigg [-\ln(\theta_1) -\frac{1}{2}\ln(1+(b^2-1)D)+ \frac{1}{2}\ln(2\pi)+ \frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)^2\bigg]
+\\\\
+&=\frac{\delta}{\delta b} \bigg [-\ln(\theta_1)\bigg] - 
+\frac{\delta}{\delta b} \bigg[\frac{1}{2}\ln(1+(b^2-1)D) \bigg]+ 
+\frac{\delta}{\delta b} \bigg[\frac{1}{2}\ln(2\pi) ]\bigg]+ 
+\frac{\delta}{\delta b} \bigg[\frac{(1+(b^2-1)D)}{2}\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)^2\bigg]
+\\\\
+&= - 
+\bigg[\frac{1}{2}\frac{2bD}{1+(b^2-1)D)} \bigg]+  
+\frac{2}{2}\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)
+\bigg[(2bD)\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg) + (1+(b^2-1)D)\bigg(\frac{a}{b^2}D  \bigg) \bigg]
+\\\\
+&= - \bigg[\frac{bD}{1+(b^2-1)D)} \bigg]+  
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)
+\bigg[(bD)\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg) + (1+(b^2-1)D)\bigg(\frac{a}{b^2}D  \bigg) \bigg]
+\\\\
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+#### Gradient with respect to parameter H:
+
+##### Gradient with respect to $\theta_0$
+
+$$
+\begin{align*}
+-\frac{\delta\ln L}{\delta \theta_0} 
+&= \frac{\delta}{\delta H}\bigg[\frac{\delta H}{\delta \theta_0}-\ln(\theta_1) -\frac{1}{2}\ln(1+(b^2-1)D)+ \frac{1}{2}\ln(2\pi)+ \frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)^2 \bigg]  
+\\\\
+&=  \bigg[2 \frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg) \bigg] \bigg( 1+0-0  \bigg)
+\\\\
+&= (1+(b^2-1)D)
+\left(\theta_0+\theta_1x_j-\frac{a}{b}D \right)
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+##### Gradient with respect to $\theta_1$
+
+$$
+\begin{align*}
+-\frac{\delta\ln L}{\delta \theta_1} 
+&= \frac{\delta}{\delta H}\bigg[\frac{\delta H}{\delta \theta_1} -\ln(\theta_1) -\frac{1}{2}\ln(1+(b^2-1)D)+ \frac{1}{2}\ln(2\pi)+ \frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j-\frac{a}{b}D  \bigg)^2\bigg]
+\\\\
+&= \frac{\delta }{\delta \theta_1}\bigg[ -\ln(\theta_1)\bigg] - \frac{\delta }{\delta \theta_1}\bigg[ \frac{1}{2}\ln(1+(b^2-1)D) \bigg]+ \frac{\delta }{\delta \theta_1}\bigg[ \frac{1}{2}\ln(2\pi) \bigg]+ \frac{\delta }{\delta \theta_1}\bigg[\frac{(1+(b^2-1)D)}{2}
+\bigg( \theta_0+\theta_1x_j - \frac{a}{b}D  \bigg)^2\bigg]
+\\\\
+&= \bigg[ - \frac{1}{\theta_1} \bigg]+
+\bigg( \theta_0+\theta_1x_j - \frac{a}{b}D  \bigg) \bigg[ x_j(1+(b^2-1)D) \bigg]
+\\\\
+\end{align*}
+$$
