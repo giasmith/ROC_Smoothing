@@ -51,6 +51,9 @@ The R code `/ROC_Func_v6.R` displays an ROC curve which is created using the fol
 
 ## Usage
 `plot.roc()`
+Once this repo has been cloned, run the following commands in command line to execute:
+`chmod +x ROC_Func_v6.R`
+`./ROC_Func_v6.R`
 
 ![Sim Image](sim.png)
 
