@@ -50,10 +50,10 @@ The R code `/ROC_Func_v6.R` displays an ROC curve which is created using the fol
 - prob: Probability threshold
 
 ## Usage
-`plot.roc()` \\
+`plot.roc()` \n
 Once this repo has been cloned, run the following commands in command line to execute:\\
-`chmod +x ROC_Func_v6.R` \\
-`./ROC_Func_v6.R` \\
+`chmod +x ROC_Func_v6.R` \n
+`./ROC_Func_v6.R` \n
 
 ![Sim Image](sim.png)
 
