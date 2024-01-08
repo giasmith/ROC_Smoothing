@@ -1,7 +1,7 @@
 ## Description
 
 ### ROC Curve
-The ROC curve is created using the following steps:
+The R code `/ROC_Func_v6.R` displays an ROC curve which is created using the following steps:
 
 1. **Calculate Parameters (`a` and `b`):**
    - `a` is determined as the difference of means (`m.0 - m.1`) divided by the standard deviation of Group 0 (`sd.0`).
