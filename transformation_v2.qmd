@@ -4,6 +4,13 @@ format: html
 editor: visual
 ---
 
+###
+##
+#
+# To view LaTeX, please follow link: https://rpubs.com/gsmit013/1136190
+##
+###
+
 ### Model for Scores
 
 $$
