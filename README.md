@@ -1,25 +1,5 @@
 ## ROC Function Description
-
-The ROC function presented here offers a comprehensive analysis of classifier performance through a series of interconnected visualizations. Here's an overview of its key features:
-
-### 1. Overview:
-The ROC function is designed to assess the performance of a classification model by examining the Receiver Operating Characteristic (ROC) curve. This curve illustrates the trade-off between Sensitivity (True Positive Rate) and 1-Specificity (False Positive Rate) across various thresholds.
-
-### 2. Data Sampling:
-The function takes a random sample of data, allowing for a representative analysis of classifier performance. This randomness ensures the robustness of the evaluation, capturing the variability inherent in real-world datasets.
-
-### 3. ROC Curve:
-The main visualization, the ROC curve, graphically represents the classifier's performance. The curve depicts Sensitivity over 1-Specificity, illustrating the model's ability to discriminate between positive and negative instances. The point on the ROC curve corresponds to a specific threshold, offering insights into the classifier's behavior at that particular decision boundary.
-
-### 4. Density Plots:
-To the right of the ROC curve, density plots provide additional context. These plots showcase the distribution of scores for both populations, with a vertical dashed line indicating the chosen threshold. This correlation aids in understanding how the threshold affects the classification of each population.
-
-### 5. QQ Plot:
-Moving into the Quantile-Quantile (QQ) space, the function generates a QQ plot. This plot aligns the quantiles of the two populations, creating a linear space. The threshold on the QQ plot coincides with the point on the ROC curve, emphasizing the relationship between classifier performance and the distribution of scores.
-
-### 6. Linear Space Concept:
-The mathematical concept behind the ROC curve transitioning into a linear space is detailed in the presentation "ROCSmoothing_Presentation." For an in-depth exploration of this concept, the associated presentation provides valuable insights. You can find it at the following link: [ROCSmoothing_Presentation](https://rpubs.com/gsmit013/1136190).
-
+The ROC/QQ function presented here takes a random sample of data and visually represents classifier performance through Sensitivity over 1-Specificity on the ROC curve. The ROC curve highlights a specific threshold, corresponding to the threshold on the density plot to the right. The QQ plot illustrates the transition into the quantile-quantile space, aligning with the ROC curve threshold for both populations, creating a linear representation. The accompanying density plot to the right provides a visual correlation of thresholds on both populations, enhancing understanding. The mathematical concept behind the ROC curve moving into a linear space is detailed in the presentation titled "ROCSmoothing_Presentation." For the analytical proof of this concept, refer to [this link](https://rpubs.com/gsmit013/1136190).
 ## Usage
 `plot.roc()`
 * Once this repo has been cloned, run the following commands to execute:
